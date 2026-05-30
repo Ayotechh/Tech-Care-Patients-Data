@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech.Care - Patient Dashboard</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-logo"></div>
+      <div class="nav-links">
+        <a href="#" class="nav-link"
+          ><span class="Overview-icon"></span> Overview</a
+        >
+        <a href="#" class="nav-link active"
+          ><span class="Patients-icon"></span> Patients</a
+        >
+        <a href="#" class="nav-link"
+          ><span class="Schedule-icon"></span> Schedule</a
+        >
+        <a href="#" class="nav-link"
+          ><span class="Message-icon"></span> Message</a
+        >
+        <a href="#" class="nav-link"
+          ><span class="Transactions-icon"></span> Transactions</a
+        >
+      </div>
+      <div class="nav-profile">
+        <div class="nav-avatar"></div>
+        <div class="nav-profile-info">
+          <span class="nav-profile-name">Dr. Jose Simmons</span>
+          <span class="nav-profile-role">General Practitioner</span>
+        </div>
+        <span class="settings-icon-btn"></span>
+        <span class="menu-icon-btn"></span>
+      </div>
+    </nav>
+
+    <!-- MAIN LAYOUT -->
+    <div class="main-layout">
+      <!-- LEFT SIDEBAR — Patients List -->
+      <aside class="sidebar-left">
+        <div class="sidebar-header">
+          <h2 class="sidebar-title">Patients</h2>
+          <span class="icon-btn"></span>
+        </div>
+        <ul class="patients-list" id="patientsList">
+          <!-- Populated by JS -->
+        </ul>
+      </aside>
+
+      <!-- MIDDLE CONTENT -->
+      <main class="main-content">
+        <!-- DIAGNOSIS HISTORY -->
+        <section class="card diagnosis-card">
+          <h2 class="card-title">Diagnosis History</h2>
+
+          <!-- Blood Pressure Chart -->
+          <div class="bp-chart-section">
+            <div class="bp-chart-header">
+              <h3 class="inner-card-title">Blood Pressure</h3>
+              <div class="bp-period-selector">
+                Last 6 months <span class="dropdown"></span>
+              </div>
+            </div>
+            <div class="bp-chart-wrapper">
+              <div class="chart-container">
+                <canvas id="bloodPressureChart"></canvas>
+              </div>
+              <div class="bp-legend">
+                <div class="bp-stat">
+                  <div class="bp-stat-label">
+                    <span class="dot systolic-dot"></span>
+                    Systolic
+                  </div>
+                  <div class="bp-stat-value" id="systolicValue">--</div>
+                  <div class="bp-stat-status" id="systolicStatus"></div>
+                </div>
+                <hr class="bp-divider" />
+                <div class="bp-stat">
+                  <div class="bp-stat-label">
+                    <span class="dot diastolic-dot"></span>
+                    Diastolic
+                  </div>
+                  <div class="bp-stat-value" id="diastolicValue">--</div>
+                  <div class="bp-stat-status" id="diastolicStatus"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vitals Cards -->
+          <div class="vitals-grid">
+            <div class="vital-card vital-blue">
+              <div class="Respiratory-icon"></div>
+              <div class="vital-label">Respiratory Rate</div>
+              <div class="vital-value" id="respiratoryRate">-- bpm</div>
+              <div class="vital-status" id="respiratoryStatus"></div>
+            </div>
+            <div class="vital-card vital-pink">
+              <div class="Temperature-icon"></div>
+              <div class="vital-label">Temperature</div>
+              <div class="vital-value" id="temperature">--°F</div>
+              <div class="vital-status" id="temperatureStatus"></div>
+            </div>
+            <div class="vital-card vital-red">
+              <div class="Heart-icon"></div>
+              <div class="vital-label">Heart Rate</div>
+              <div class="vital-value" id="heartRate">-- bpm</div>
+              <div class="vital-status" id="heartRateStatus"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- DIAGNOSTIC LIST -->
+        <section class="card">
+          <h2 class="card-title">Diagnostic List</h2>
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th>Problem/Diagnosis</th>
+                <th>Description</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="diagnosticTableBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </section>
+      </main>
+
+      <!-- RIGHT SIDEBAR — Patient Profile -->
+      <aside class="sidebar-right">
+        <!-- Profile Card -->
+        <div class="card profile-card">
+          <div class="profile-photo-wrapper">
+            <img
+              id="patientPhoto"
+              src=""
+              alt="Jessica Taylor"
+              class="profile-photo"
+            />
+          </div>
+          <h2 class="profile-name" id="patientName">Jessica Taylor</h2>
+
+          <div class="profile-info-list">
+            <div class="profile-info-item">
+              <span class="dob-info-icon"></span>
+              <div>
+                <div class="profile-info-label">Date Of Birth</div>
+                <div class="profile-info-value" id="patientDOB">--</div>
+              </div>
+            </div>
+            <div class="profile-info-item">
+              <span class="gender-info-icon"></span>
+              <div>
+                <div class="profile-info-label">Gender</div>
+                <div class="profile-info-value" id="patientGender">--</div>
+              </div>
+            </div>
+            <div class="profile-info-item">
+              <span class="contact-info-icon"></span>
+              <div>
+                <div class="profile-info-label">Contact Info</div>
+                <div class="profile-info-value" id="patientPhone">--</div>
+              </div>
+            </div>
+            <div class="profile-info-item">
+              <span class="contact-info-icon"></span>
+              <div>
+                <div class="profile-info-label">Emergency Contacts</div>
+                <div class="profile-info-value" id="patientEmergency">--</div>
+              </div>
+            </div>
+            <div class="profile-info-item">
+              <span class="insurance-info-icon"></span>
+              <div>
+                <div class="profile-info-label">Insurance Provider</div>
+                <div class="profile-info-value" id="patientInsurance">--</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-show-all">Show All Information</button>
+        </div>
+
+        <!-- Lab Results -->
+        <div class="card lab-results-card">
+          <h2 class="card-title">Lab Results</h2>
+          <ul class="lab-list" id="labResultsList">
+            <!-- Populated by JS -->
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
