@@ -1,0 +1,26 @@
+{
+  "name": "tech-care-patients-data",
+  "version": "1.0.0",
+  "description": "Tech.Care Patient Dashboard - A healthcare patient management interface with Vercel Web Analytics",
+  "main": "script.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx http-server -p 3000",
+    "preview": "npx http-server -p 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayotechh/Tech-Care-Patients-Data.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ayotechh/Tech-Care-Patients-Data/issues"
+  },
+  "homepage": "https://github.com/Ayotechh/Tech-Care-Patients-Data#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
