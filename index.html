@@ -13,11 +13,14 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <!-- Vercel Web Analytics -->
-    <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    <!-- Import map for @vercel/analytics -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@vercel/analytics": "./node_modules/@vercel/analytics/dist/index.mjs"
+        }
+      }
     </script>
-    <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <body>
     <!-- NAVBAR -->
@@ -210,6 +213,7 @@
       </aside>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="analytics.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
